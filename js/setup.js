@@ -29,33 +29,42 @@ function title(){
 }
 
 function prepare(e){
-    checkmate.volume = 0.5;
+    checkmate.volume = 0;
     checkmate.play();
     checkmate.pause();
-    attackbgm.volume = 0.5;
+    attackbgm.volume = 0;
     attackbgm.play();
     attackbgm.pause();
-    clickbgm.volume = 0.5;
+    clickbgm.volume = 0;
     clickbgm.play();
     clickbgm.pause();
-    fieldbgm.volume = 0.5;
+    fieldbgm.volume = 0;
     fieldbgm.play();
     fieldbgm.pause();
-    talkingbgm.volume = 0.5;
+    talkingbgm.volume = 0;
     talkingbgm.play();
     talkingbgm.pause();
-    winbgm.volume = 0.5;
+    winbgm.volume = 0;
     winbgm.play();
     winbgm.pause();
-    wazabgm.volume = 0.5;
+    wazabgm.volume = 0;
     wazabgm.play();
     wazabgm.pause();
-    wazabgm2.volume = 0.5;
+    wazabgm2.volume = 0;
     wazabgm2.play();
     wazabgm2.pause();
-    fourbgm.volume = 0.5;
+    fourbgm.volume = 0;
     fourbgm.play();
     fourbgm.pause();
+    checkmate.volume = 0.5;
+    attackbgm.volume = 0.5;
+    clickbgm.volume = 0.5;
+    fieldbgm.volume = 0.5;
+    talkingbgm.volume = 0.5;
+    winbgm.volume = 0.5;
+    wazabgm.volume = 0.5;
+    wazabgm2.volume = 0.5;
+    fourbgm.volume = 0.5;
 
     var tap = ('ontouchstart' in window || navigator.msMaxTouchPoints) ? 'touchstart' : 'mousedown';
     document.removeEventListener(tap, prepare);
