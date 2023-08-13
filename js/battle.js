@@ -909,7 +909,9 @@ function battle4 (stage2, game, enemydata, next1, next2){
     var ballArr = [[],[],[],[]];
     var stturn = balls.length % 2; //0なら後攻
     var i = 0;
+    debugger;
     for( ; i<balls.length-2; i += 2){
+      console.log(balls.slice( i, i + 1 ))
       var w1 = balls.slice( i, i + 1 );
       ballArr[w1-1].push([1,i]);
       var w2 = balls.slice( i + 1,  i + 1 + 1 );
