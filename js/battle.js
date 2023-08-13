@@ -1028,7 +1028,8 @@ function battle4 (stage2, game, enemydata, next1, next2){
         return;
       }else if(resArr[i] != "Invalid"){
         okArr.push(i);
-      }else if(resArr[i] == "0" && enemydata.level < 0.7){
+      }
+      if(resArr[i] == "0" && enemydata.level < 0.7){
         tamaoki(i+1, 2);
         damage(20);
         return;
