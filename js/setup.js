@@ -29,8 +29,35 @@ function title(){
 }
 
 function prepare(e){
+    checkmate.volume = 0.5;
+    checkmate.play();
+    checkmate.pause();
+    attackbgm.volume = 0.5;
+    attackbgm.play();
+    attackbgm.pause();
+    clickbgm.volume = 0.5;
+    clickbgm.play();
+    clickbgm.pause();
+    fieldbgm.volume = 0.5;
+    fieldbgm.play();
+    fieldbgm.pause();
+    talkingbgm.volume = 0.5;
+    talkingbgm.play();
+    talkingbgm.pause();
+    winbgm.volume = 0.5;
+    winbgm.play();
+    winbgm.pause();
+    wazabgm.volume = 0.5;
+    wazabgm.play();
+    wazabgm.pause();
+    wazabgm2.volume = 0.5;
+    wazabgm2.play();
+    wazabgm2.pause();
+    fourbgm.volume = 0.5;
+    fourbgm.play();
+    fourbgm.pause();
+
     var tap = ('ontouchstart' in window || navigator.msMaxTouchPoints) ? 'touchstart' : 'mousedown';
-    document.removeEventListener(tap, bgmstart);
     document.removeEventListener(tap, prepare);
     var ctx = document.getElementById('canvas2').getContext('2d');
     ctx.fillStyle = "Black";
@@ -40,22 +67,21 @@ function prepare(e){
     }, 1000);
     GLstage = new createjs.StageGL( "canvas" );
     GLstage.setClearColor('#000');
-    checkmate.play({loop: -1});
 }
 
 function fade(music){
     var vol = 0.5;
     function fade2(){
-        vol = vol - 0.01;
+        vol = vol - 0.05;
         music.volume = vol;
-        if(vol <= 0){
-            music.stop();
+        if(vol <= 0.05){
+            music.pause();
             music.volume = 0.5;
             return;
         }
         window.setTimeout(function() {
             fade2();
-        }, 10);
+        }, 50);
     }
     fade2();
 }
@@ -69,6 +95,8 @@ function title3(){
 
 
 function title2(stage2){
+    checkmate.currentTime = 22;
+    checkmate.play();
 
     var stage = stage2;
 
@@ -89,8 +117,6 @@ function title2(stage2){
         createjs.Tween.get(itembox).wait(i*100 + 1300).to({scaleX: 1, scaleY: 1}, 400, createjs.Ease.bounceOut);
         stage.addChild(itembox);
     }
-
-    checkmate.position = 22000;
 
     text2(0, "初めから");
     text2(1, "続きから");
@@ -127,7 +153,7 @@ function title2(stage2){
         if(x>80 && x<240){
             if(y>202 && y<256){
                 document.removeEventListener(tap, can2touch, false);
-                clickbgm.stop();
+                clickbgm.pause();
                 clickbgm.play();
                 for(var i=1; i<stage.children.length; i++){
                     createjs.Tween.get(stage.children[i]).to({alpha: 0}, 300);
@@ -137,7 +163,7 @@ function title2(stage2){
 
             } else if (y>277 && y<330){
                 document.removeEventListener(tap, can2touch, false);
-                clickbgm.stop();
+                clickbgm.pause();
                 clickbgm.play();
                 for(var i=1; i<stage.children.length; i++){
                     createjs.Tween.get(stage.children[i]).to({alpha: 0}, 300);
@@ -147,7 +173,7 @@ function title2(stage2){
 
             } else if (y>352 && y<405){
                 document.removeEventListener(tap, can2touch, false);
-                clickbgm.stop();
+                clickbgm.pause();
                 clickbgm.play();
                 for(var i=1; i<stage.children.length; i++){
                     createjs.Tween.get(stage.children[i]).to({alpha: 0}, 300);
@@ -156,7 +182,7 @@ function title2(stage2){
                 fade(checkmate);
 
             } else if (y>427 && y<480){
-                clickbgm.stop();
+                clickbgm.pause();
                 clickbgm.play();
                 location.href = './explanation.html';
             }
@@ -211,7 +237,7 @@ function title2(stage2){
 
             if(x>32 && x<139 && y>448 && y<501){
                 document.removeEventListener(tap, cantouch, false);
-                clickbgm.stop();
+                clickbgm.pause();
                 clickbgm.play();
                 for(var i=0; i<stage.children.length - 1; i++){
                     createjs.Tween.get(stage.children[i]).to({alpha: 0}, 200);
@@ -221,7 +247,7 @@ function title2(stage2){
                 div2.parentNode.removeChild(div2);
 
             } else if (x>181 && x<288 && y>448 && y<501){
-                clickbgm.stop();
+                clickbgm.pause();
                 clickbgm.play();
                 stage.addChild(cover);
                 var newname = document.getElementById("name").value;
@@ -387,7 +413,7 @@ function title2(stage2){
 
             if(x>32 && x<139 && y>448 && y<501){
                 document.removeEventListener(tap, cantouch, false);
-                clickbgm.stop();
+                clickbgm.pause();
                 clickbgm.play();
                 for(var i=0; i<stage.children.length - 1; i++){
                     createjs.Tween.get(stage.children[i]).to({alpha: 0}, 200);
@@ -397,7 +423,7 @@ function title2(stage2){
                 div2.parentNode.removeChild(div2);
 
             } else if (x>181 && x<288 && y>448 && y<501){
-                clickbgm.stop();
+                clickbgm.pause();
                 clickbgm.play();
                 stage.addChild(cover);
                 var newname = document.getElementById("name").value;
@@ -561,7 +587,7 @@ function title2(stage2){
 
             if(x>120 && x<200 && y>490 && y<520){
                 document.removeEventListener(tap, cantouch, false);
-                clickbgm.stop();
+                clickbgm.pause();
                 clickbgm.play();
                 for(var i=0; i<stage.children.length - 1; i++){
                     createjs.Tween.get(stage.children[i]).to({alpha: 0}, 200);
@@ -696,8 +722,8 @@ function opening(stage){
 
     }
     function next301(){
-        checkmate.position = 74800;
-        checkmate.play({loop: -1});
+        checkmate.currentTime = 74.8;
+        checkmate.play();
     }
     function next302(){
         fade(checkmate);

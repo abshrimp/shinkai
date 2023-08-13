@@ -267,7 +267,8 @@ var peopleList = [
                 createjs.Ticker.removeEventListener("tick", stage);
                 stage.clear();
                 game.stopOn = false;
-                fieldbgm.play({loop: -1});
+                fieldbgm.currentTime = 0;
+                fieldbgm.play();
             }
         }
     },
@@ -597,7 +598,8 @@ var peopleList = [
                     createjs.Ticker.removeEventListener("tick", stage);
                     stage.clear();
                     game.stopOn = false;
-                    fieldbgm.play({loop: -1});
+                    fieldbgm.currentTime = 0;
+                    fieldbgm.play();
                 }
             }
         }
@@ -719,7 +721,8 @@ var peopleList = [
                     createjs.Ticker.removeEventListener("tick", stage);
                     stage.clear();
                     game.stopOn = false;
-                    fieldbgm.play({loop: -1});
+                    fieldbgm.currentTime = 0;
+                    fieldbgm.play();
                 }
             }else{
                 talk("村人", "さっきはありがとよ、", 1, stage, next9);
@@ -766,7 +769,8 @@ var peopleList = [
                     createjs.Ticker.removeEventListener("tick", stage);
                     stage.clear();
                     game.stopOn = false;
-                    fieldbgm.play({loop: -1});
+                    fieldbgm.currentTime = 0;
+                    fieldbgm.play();
                 }
             }else{
                 talk("村人", "さっきはありがとよ、", 1, stage, next9);
@@ -813,7 +817,8 @@ var peopleList = [
                     createjs.Ticker.removeEventListener("tick", stage);
                     stage.clear();
                     game.stopOn = false;
-                    fieldbgm.play({loop: -1});
+                    fieldbgm.currentTime = 0;
+                    fieldbgm.play();
                 }
             }else{
                 talk("村人", "さっきはありがとよ、", 1, stage, next9);
@@ -860,7 +865,8 @@ var peopleList = [
                     createjs.Ticker.removeEventListener("tick", stage);
                     stage.clear();
                     game.stopOn = false;
-                    fieldbgm.play({loop: -1});
+                    fieldbgm.currentTime = 0;
+                    fieldbgm.play();
                 }
             }else{
                 talk("村人", "さっきはありがとよ、", 1, stage, next9);
@@ -907,7 +913,8 @@ var peopleList = [
                     createjs.Ticker.removeEventListener("tick", stage);
                     stage.clear();
                     game.stopOn = false;
-                    fieldbgm.play({loop: -1});
+                    fieldbgm.currentTime = 0;
+                    fieldbgm.play();
                 }
             }else{
                 talk("村人", "さっきはありがとよ、", 1, stage, next9);
@@ -954,7 +961,8 @@ var peopleList = [
                     createjs.Ticker.removeEventListener("tick", stage);
                     stage.clear();
                     game.stopOn = false;
-                    fieldbgm.play({loop: -1});
+                    fieldbgm.currentTime = 0;
+                    fieldbgm.play();
                 }
             }else{
                 talk("村人", "さっきはありがとよ、", 1, stage, next9);
@@ -1001,7 +1009,8 @@ var peopleList = [
                     createjs.Ticker.removeEventListener("tick", stage);
                     stage.clear();
                     game.stopOn = false;
-                    fieldbgm.play({loop: -1});
+                    fieldbgm.currentTime = 0;
+                    fieldbgm.play();
                 }
             }else{
                 talk("村人", "さっきはありがとよ、", 1, stage, next9);

@@ -80,7 +80,7 @@ function field ( fieldmap, saveX, saveY, ouryu1, ouryu2 ) {
 				//画面中央がタッチされたか
 				if( x >= hero.x && x <= hero.x + hero.width && y >= hero.y && y <= hero.y + hero.height ) {
 					game.stopOn = true;
-					clickbgm.stop();
+					clickbgm.pause();
 					clickbgm.play();
 					pauseScene(game, [tilemap.x, tilemap.y]);
 				}else{
@@ -164,7 +164,7 @@ function field ( fieldmap, saveX, saveY, ouryu1, ouryu2 ) {
 				if( game.input.space ){
 					game.input.space = false;
 					game.stopOn = true;
-					clickbgm.stop();
+					clickbgm.pause();
 					clickbgm.play();
 					pauseScene(game, [tilemap.x, tilemap.y]);
 					return;
