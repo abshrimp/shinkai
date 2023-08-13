@@ -285,6 +285,7 @@
         var winbgm;
 
         function handleComplete() {
+            console.log("handleComplete")
             var tap = ('ontouchstart' in window || navigator.msMaxTouchPoints) ? 'touchstart' : 'mousedown';
 
             checkmate = createjs.Sound.createInstance('checkmate');
@@ -302,6 +303,7 @@
         }
 
         function bgmstart(){
+            console.log("bgmstart")
             checkmate.volume = 0.5;
             checkmate.play();       
             checkmate.stop();   
