@@ -25,16 +25,14 @@ function title(){
         var tap = ('ontouchstart' in window || navigator.msMaxTouchPoints) ? 'touchstart' : 'mousedown';
         document.addEventListener(tap, prepare, false);
     }, 1000);
-
+    wazabgm.muted = true;
+    wazabgm2.muted = true;
+    fourbgm.muted = true;
+    winbgm.muted = true;
 }
 
 function prepare(e){
-    wazabgm.volume = 0;
-    wazabgm2.volume = 0;
-    fourbgm.volume = 0;
-    winbgm.volume = 0;
     checkmate.play();
-    checkmate.volume = 0;
     checkmate.pause();
     /*attackbgm.play();
     attackbgm.pause();
@@ -68,6 +66,10 @@ function prepare(e){
         wazabgm2.volume = 0.5;
         fourbgm.volume = 0.5;
         winbgm.volume = 0.5;
+        wazabgm.muted = false;
+        wazabgm2.muted = false;
+        fourbgm.muted = false;
+        winbgm.muted = false;
         title3();
     }, 1000);
     GLstage = new createjs.StageGL( "canvas" );
