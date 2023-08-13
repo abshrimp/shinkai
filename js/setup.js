@@ -360,6 +360,11 @@ function title2(stage2){
         createjs.Tween.get(t).wait(200).to({scaleX: 1, scaleY: 1}, 400, createjs.Ease.bounceOut).call(comein);
         stage.addChild(t);
 
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            if (localStorage.getItem('name') != null) document.getElementById("name").value = localStorage.getItem('name');
+            if (localStorage.getItem('word') != null) document.getElementById("word").value = localStorage.getItem('word');
+        }
+
         var tap = ('ontouchstart' in window || navigator.msMaxTouchPoints) ? 'touchstart' : 'mousedown';
 
         function comein(){
@@ -424,6 +429,10 @@ function title2(stage2){
 
 
                 var data = {name: newname, word: password};
+                if (window.matchMedia('(display-mode: standalone)').matches) {
+                    localStorage.setItem('name', newname);
+                    localStorage.setItem('word', password);
+                }
 
                 var request = new XMLHttpRequest();
                 request.open("POST", "https://ikegamishinkai.shop/get.php", true);
