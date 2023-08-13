@@ -1033,7 +1033,7 @@ function battle4 (stage2, game, enemydata, next1, next2){
         okArr.push(i);
       }
       if(resArr[i] == "0" && enemydata.level < 0.7){
-        tamaoki(i+1, 2);
+        tamaoki(i+1, 3);
         damage(20);
         return;
       }
