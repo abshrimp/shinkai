@@ -910,15 +910,15 @@ function battle4 (stage2, game, enemydata, next1, next2){
     var stturn = balls.length % 2; //0なら後攻
     var i = 0;
     for( ; i<balls.length-2; i += 2){
-      var w1 = balls.slice( i, i + 1 - 1 );
+      var w1 = balls.slice( i, i + 1 );
       ballArr[w1-1].push([1,i]);
-      var w2 = balls.slice( i + 1,  i + 1 + 1 - 1 );
+      var w2 = balls.slice( i + 1,  i + 1 + 1 );
       ballArr[w2-1].push([0,i+1]);
     }
-    var w = balls.slice( i, i + 1 - 1 );
+    var w = balls.slice( i, i + 1 );
     ballArr[w-1].push([1,i]);
     if(stturn == 0){
-      w = balls.slice( i + 1, i + 1 + 1 - 1 );
+      w = balls.slice( i + 1, i + 1 + 1 );
       ballArr[w-1].push([0,i+1]);
     }
   
