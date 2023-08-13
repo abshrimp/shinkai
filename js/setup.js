@@ -29,6 +29,10 @@ function title(){
 }
 
 function prepare(e){
+    wazabgm.volume = 0;
+    wazabgm2.volume = 0;
+    fourbgm.volume = 0;
+    winbgm.volume = 0;
     checkmate.play();
     checkmate.volume = 0;
     checkmate.pause();
@@ -41,16 +45,12 @@ function prepare(e){
     talkingbgm.play();
     talkingbgm.pause();*/
     wazabgm.play();
-    wazabgm.volume = 0;
     wazabgm.pause();
     wazabgm2.play();
-    wazabgm2.volume = 0;
     wazabgm2.pause();
     fourbgm.play();
-    fourbgm.volume = 0;
     fourbgm.pause();
     winbgm.play();
-    winbgm.volume = 0;
     winbgm.pause();
 
     var tap = ('ontouchstart' in window || navigator.msMaxTouchPoints) ? 'touchstart' : 'mousedown';
