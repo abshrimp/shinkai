@@ -29,9 +29,10 @@ function title(){
 }
 
 function prepare(e){
-    /*checkmate.play();
+    checkmate.play();
+    checkmate.volume = 0;
     checkmate.pause();
-    attackbgm.play();
+    /*attackbgm.play();
     attackbgm.pause();
     clickbgm.play();
     clickbgm.pause();
