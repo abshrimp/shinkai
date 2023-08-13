@@ -40,6 +40,7 @@ function prepare(e){
     }, 1000);
     GLstage = new createjs.StageGL( "canvas" );
     GLstage.setClearColor('#000');
+    checkmate.play({loop: -1});
 }
 
 function fade(music){
