@@ -991,6 +991,7 @@ function battle4 (stage2, game, enemydata, next1, next2){
     }
     for(var i = 1; i < 4; i++){           //置いたところから右に３つ
       if(ww+i >= 4) continue;             //右に出てたら    0 - 3
+      if(height[ww]-i < 1) continue;      //下に出てたら  1 - 4
       if(height[ww+i] >= height[ww]-i){   //高さがあったら  1 - 4
         if(ballArr[ww+i][height[ww]-i-1][0] == stturn){
           connect.push(ballArr[ww+i][height[ww]-i-1][1]);
