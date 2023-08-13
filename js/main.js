@@ -232,6 +232,7 @@
 
                 var msgcou = 0;
 
+                talkingbgm.pause();
                 talkingbgm.play();
                 hyouji2();
 
