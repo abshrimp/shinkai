@@ -91,7 +91,6 @@ function title2(stage2){
     }
 
     checkmate.position = 22000;
-    checkmate.play({loop: -1});
 
     text2(0, "初めから");
     text2(1, "続きから");
