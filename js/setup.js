@@ -39,15 +39,19 @@ function prepare(e){
     fieldbgm.play();
     fieldbgm.pause();
     talkingbgm.play();
-    talkingbgm.pause();
+    talkingbgm.pause();*/
     wazabgm.play();
+    wazabgm.volume = 0;
     wazabgm.pause();
     wazabgm2.play();
+    wazabgm2.volume = 0;
     wazabgm2.pause();
     fourbgm.play();
+    fourbgm.volume = 0;
     fourbgm.pause();
     winbgm.play();
-    winbgm.pause();*/
+    winbgm.volume = 0;
+    winbgm.pause();
 
     var tap = ('ontouchstart' in window || navigator.msMaxTouchPoints) ? 'touchstart' : 'mousedown';
     document.removeEventListener(tap, prepare);
