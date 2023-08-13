@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png">
+	<title>威ヶ神真改</title>
+    <link rel="manifest" href="manifest.json">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet">
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: black;
+            color: white;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            overflow: hidden;
+		}
+		canvas {
+			display: block;
+  			position: absolute;
+  			top: 0;
+  			right: 0;
+  			bottom: 0;
+  			left: 0;
+  			margin: auto;
+		}
+        progress {
+            width: 90%;
+        }
+        div {
+			display: block;
+  			position: absolute;
+            top: 35%;
+  			right: 0;
+  			bottom: 0;
+  			left: 0;
+  			margin: auto;
+            font-family: 'Reggae One', cursive;
+            text-align: center;
+            z-index: 0;
+            transition-property: opacity; 
+            transition-duration: 1s;
+            opacity: 1;
+        }
+        #div2 {
+			display: block;
+  			position: absolute;
+            top: 0;
+  			right: 0;
+  			bottom: 0;
+  			left: 0;
+  			margin: auto;
+            z-index: 4;
+        }
+        .div.is-show {
+            opacity: 0;
+        }
+        input {
+            width: 80%;
+            font-size: 20px;
+            height: 30px;
+        }
+	</style>
+</head>
+<body>
+    <div id="div" class="div">
+        <h3>Now Loading ...</h3>
+        <progress id="progress" value="0"></progress>
+    </div>
+	<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js');
+            }
+        });
+        
+        var manifest = [
+            {
+                src: 'js/engine/scene.js'
+            }, {
+                src: 'js/engine/sprite.js'
+            }, {
+                src: 'js/engine/party.js'
+            }, {
+                src: 'js/engine/tile.js'
+            }, {
+                src: 'js/engine/charactertile.js'
+            }, {
+                src: 'js/engine/tilemap.js'
+            }, {
+                src: 'js/engine/game.js'
+            }, {
+                src: 'js/battle.js'
+            }, {
+                src: 'js/field.js'
+            }, {
+                src: 'js/map1.js'
+            }, {
+                src: 'js/map2.js'
+            }, {
+                src: 'js/map3.js'
+            }, {
+                src: 'js/map4.js'
+            }, {
+                src: 'js/map5.js'
+            }, {
+                src: 'js/map6.js'
+            }, {
+                src: 'js/map7.js'
+            }, {
+                src: 'js/map8.js'
+            }, {
+                src: 'js/map9.js'
+            }, {
+                src: 'js/map10.js'
+            }, {
+                src: 'js/map11.js'
+            }, {
+                src: 'js/main.js'
+            }, {
+                src: 'js/setup.js'
+            }, {
+                src: 'js/enemy.js'
+            }, {
+                src: 'js/item.js'
+            }, {
+                src: 'js/people.js'
+            }, {
+                src: 'js/wea.js'
+            }, {
+                id: "titlebg",
+                src: 'img/titlebg.jpeg'
+            }, {
+                id: "logo",
+                src: 'img/logo.png'
+            }, {
+                id: "shinkai",
+                src: "img/shinkai.png"
+            }, {
+                id: "item",
+                src: "img/item.png"
+            }, {
+                id: "tile4",
+                src: "img/tile4.png"
+            }, {
+                id: "wazabg1",
+                src: "img/wazabg/1.png"
+            }, {
+                id: "wazabg2",
+                src: "img/wazabg/2.png"
+            }, {
+                id: "damage",
+                src: "img/damage.png"
+            }, {
+                id: "onigiri",
+                src: "img/onigiri.png"
+            }, {
+                id: "attack",
+                src: "sound/attack.mp3"
+            }, {
+                id: "click",
+                src: "sound/click.mp3"
+            }, {
+                id: "talking",
+                src: "sound/talking.mp3"
+            }, {
+                id: "wazabgm",
+                src: "sound/waza.mp3"
+            }, {
+                id: "checkmate",
+                src: "sound/checkmate.mp3"
+            }, {
+                id: "wazabgm2",
+                src: "sound/waza2.mp3"
+            }, {
+                id: "four",
+                src: "sound/four.mp3"
+            }, {
+                id: "win",
+                src: "sound/win.mp3"
+            }, {
+                id: "hero",
+                src: "img/hero.png"
+            }, {
+                id: "start",
+                src: "img/start.png"
+            }, {
+                id: "opimg1",
+                src: "img/opimg/1.jpeg"
+            }, {
+                id: "opimg2",
+                src: "img/opimg/2.jpeg"
+            }, {
+                id: "opimg3",
+                src: "img/opimg/3.jpeg"
+            }, {
+                id: "endimg1",
+                src: "img/opimg/end1.png"
+            }, {
+                id: "endimg2",
+                src: "img/opimg/end2.png"
+            }, {
+                id: "endimg3",
+                src: "img/opimg/end3.png"
+            }, {
+                id: "field",
+                src: "sound/field.mp3"
+            }
+        ];
+
+        /*, {
+                id: "",
+                src: ""
+            }*/
+
+        for(var i = 1; i <= 30; i++){
+            var id = "enemy" + i;
+            var src = "img/enemy/" + i  + ".png";
+            manifest.push({id: id, src: src});
+        }
+
+        for(var i = 1; i <= 8; i++){
+            var id = "battlebg" + i;
+            var src = "img/bg/" + i  + ".png";
+            manifest.push({id: id, src: src});
+        }
+
+        for(var i = 1; i <= 16; i++){
+            var id = "light" + i;
+            var src = "img/light/" + i  + ".gif";
+            manifest.push({id: id, src: src});
+        }
+        for(var i = 1; i <= 10; i++){
+            var id = "yami" + i;
+            var src = "img/yami/" + i  + ".png";
+            manifest.push({id: id, src: src});
+        }
+        for(var i = 1; i <= 10; i++){
+            var id = "airbreak" + i;
+            var src = "img/airbreak/" + i  + ".png";
+            manifest.push({id: id, src: src});
+        }
+        for(var i = 1; i <= 15; i++){
+            var id = "light2" + i;
+            var src = "img/light2/" + i  + ".png";
+            manifest.push({id: id, src: src});
+        }
+
+        var loadQueue = new createjs.LoadQueue();
+        loadQueue.installPlugin(createjs.Sound);
+
+        loadQueue.addEventListener("progress", handleProgress);
+        loadQueue.addEventListener("fileload", handleFileLoadComplete);
+        loadQueue.addEventListener("complete", handleComplete);
+
+        loadQueue.loadManifest(manifest);
+
+
+        function handleProgress(event) {
+            var progress = event.progress;
+            document.getElementById("progress").value = progress;
+        }
+
+        function handleFileLoadComplete(event) {
+            if(event.item.type == createjs.Types.JAVASCRIPT){
+                document.head.append(event.result)
+            }
+        }
+
+        var checkmate;
+        var attackbgm;
+        var clickbgm;
+        var fieldbgm;
+        var talkingbgm;
+        var wazabgm;
+        var wazabgm2;
+        var fourbgm;
+        var winbgm;
+
+        function handleComplete() {
+            var tap = ('ontouchstart' in window || navigator.msMaxTouchPoints) ? 'touchstart' : 'mousedown';
+
+            checkmate = createjs.Sound.createInstance('checkmate');
+            attackbgm = createjs.Sound.createInstance('attack');
+            clickbgm = createjs.Sound.createInstance('click');
+            fieldbgm = createjs.Sound.createInstance('field');
+            talkingbgm = createjs.Sound.createInstance('talking');
+            wazabgm = createjs.Sound.createInstance('wazabgm');
+            wazabgm2 = createjs.Sound.createInstance('wazabgm2');
+            fourbgm = createjs.Sound.createInstance('four');
+            winbgm = createjs.Sound.createInstance('win');
+
+            document.addEventListener(tap,bgmstart,false); 
+            title();
+        }
+
+        function bgmstart(){
+            checkmate.volume = 0.5;
+            checkmate.play();       
+            checkmate.stop();   
+            attackbgm.volume = 0.5;
+            attackbgm.play();       
+            attackbgm.stop();   
+            clickbgm.volume = 0.5;
+            clickbgm.play();       
+            clickbgm.stop();   
+            fieldbgm.volume = 0.5;
+            fieldbgm.play();       
+            fieldbgm.stop();   
+            talkingbgm.volume = 0.5;
+            talkingbgm.play();       
+            talkingbgm.stop();   
+            winbgm.volume = 0.5;
+            winbgm.play();       
+            winbgm.stop();      
+            wazabgm.volume = 0.5;
+            wazabgm.play();       
+            wazabgm.stop();   
+            wazabgm2.volume = 0.5;
+            wazabgm2.play();       
+            wazabgm2.stop();   
+            fourbgm.volume = 0.5;
+            fourbgm.play();       
+            fourbgm.stop();       
+        }
+    </script>
+</body>
+</html>
