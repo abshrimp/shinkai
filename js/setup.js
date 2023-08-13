@@ -29,7 +29,7 @@ function title(){
 }
 
 function prepare(e){
-    checkmate.play();
+    /*checkmate.play();
     checkmate.pause();
     attackbgm.play();
     attackbgm.pause();
@@ -46,7 +46,7 @@ function prepare(e){
     fourbgm.play();
     fourbgm.pause();
     winbgm.play();
-    winbgm.pause();
+    winbgm.pause();*/
 
     var tap = ('ontouchstart' in window || navigator.msMaxTouchPoints) ? 'touchstart' : 'mousedown';
     document.removeEventListener(tap, prepare);
