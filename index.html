@@ -1,86 +1,127 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png">
-	<title>威ヶ神真改</title>
+    <title>威ヶ神真改</title>
     <link rel="manifest" href="manifest.json">
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet">
-	<style>
-		body {
-			padding: 0;
-			margin: 0;
-			background-color: black;
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: black;
             color: white;
             user-select: none;
             -moz-user-select: none;
             -webkit-user-select: none;
             -ms-user-select: none;
             overflow: hidden;
-		}
-		canvas {
-			display: block;
-  			position: absolute;
-  			top: 0;
-  			right: 0;
-  			bottom: 0;
-  			left: 0;
-  			margin: auto;
-		}
+        }
+
+        canvas {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+        }
+
         progress {
             width: 90%;
         }
+
         div {
-			display: block;
-  			position: absolute;
+            display: block;
+            position: absolute;
             top: 35%;
-  			right: 0;
-  			bottom: 0;
-  			left: 0;
-  			margin: auto;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
             font-family: 'Reggae One', cursive;
             text-align: center;
             z-index: 0;
-            transition-property: opacity; 
+            transition-property: opacity;
             transition-duration: 1s;
             opacity: 1;
         }
+
         #div2 {
-			display: block;
-  			position: absolute;
+            display: block;
+            position: absolute;
             top: 0;
-  			right: 0;
-  			bottom: 0;
-  			left: 0;
-  			margin: auto;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
             z-index: 4;
         }
+
         .div.is-show {
             opacity: 0;
         }
+
         input {
             width: 80%;
             font-size: 20px;
             height: 30px;
         }
-	</style>
+    </style>
 </head>
+
 <body>
     <div id="div" class="div">
         <h3>Now Loading ...</h3>
         <progress id="progress" value="0"></progress>
     </div>
-	<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
     <script>
-        window.addEventListener('load', function() {
+
+        var checkmate;
+        var attackbgm;
+        var clickbgm;
+        var fieldbgm;
+        var talkingbgm;
+        var wazabgm;
+        var wazabgm2;
+        var fourbgm;
+        var winbgm;
+
+        checkmate = new Audio('sound/checkmate.mp3');
+        checkmate.load();
+        checkmate.loop = true;
+        attackbgm = new Audio('sound/attack.mp3');
+        attackbgm.load();
+        clickbgm = new Audio('sound/click.mp3');
+        clickbgm.load();
+        fieldbgm = new Audio('sound/field.mp3');
+        fieldbgm.load();
+        fieldbgm.loop = true;
+        talkingbgm = new Audio('sound/talking.mp3');
+        talkingbgm.load();
+        talkingbgm.loop = true;
+        wazabgm = new Audio('sound/waza.mp3');
+        wazabgm.load();
+        wazabgm2 = new Audio('sound/waza2.mp3');
+        wazabgm2.load();
+        fourbgm = new Audio('sound/four.mp3');
+        fourbgm.load();
+        winbgm = new Audio('sound/win.mp3');
+        winbgm.load();
+
+        window.addEventListener('load', function () {
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('sw.js');
             }
         });
-        
+
         var manifest = [
             {
                 src: 'js/engine/scene.js'
@@ -161,7 +202,7 @@
             }, {
                 id: "onigiri",
                 src: "img/onigiri.png"
-            }, {
+            }, { /*
                 id: "attack",
                 src: "sound/attack.mp3"
             }, {
@@ -186,6 +227,9 @@
                 id: "win",
                 src: "sound/win.mp3"
             }, {
+                id: "field",
+                src: "sound/field.mp3"
+            }, {*/
                 id: "hero",
                 src: "img/hero.png"
             }, {
@@ -209,9 +253,6 @@
             }, {
                 id: "endimg3",
                 src: "img/opimg/end3.png"
-            }, {
-                id: "field",
-                src: "sound/field.mp3"
             }
         ];
 
@@ -220,37 +261,37 @@
                 src: ""
             }*/
 
-        for(var i = 1; i <= 30; i++){
+        for (var i = 1; i <= 30; i++) {
             var id = "enemy" + i;
-            var src = "img/enemy/" + i  + ".png";
-            manifest.push({id: id, src: src});
+            var src = "img/enemy/" + i + ".png";
+            manifest.push({ id: id, src: src });
         }
 
-        for(var i = 1; i <= 8; i++){
+        for (var i = 1; i <= 8; i++) {
             var id = "battlebg" + i;
-            var src = "img/bg/" + i  + ".png";
-            manifest.push({id: id, src: src});
+            var src = "img/bg/" + i + ".png";
+            manifest.push({ id: id, src: src });
         }
 
-        for(var i = 1; i <= 16; i++){
+        for (var i = 1; i <= 16; i++) {
             var id = "light" + i;
-            var src = "img/light/" + i  + ".gif";
-            manifest.push({id: id, src: src});
+            var src = "img/light/" + i + ".gif";
+            manifest.push({ id: id, src: src });
         }
-        for(var i = 1; i <= 10; i++){
+        for (var i = 1; i <= 10; i++) {
             var id = "yami" + i;
-            var src = "img/yami/" + i  + ".png";
-            manifest.push({id: id, src: src});
+            var src = "img/yami/" + i + ".png";
+            manifest.push({ id: id, src: src });
         }
-        for(var i = 1; i <= 10; i++){
+        for (var i = 1; i <= 10; i++) {
             var id = "airbreak" + i;
-            var src = "img/airbreak/" + i  + ".png";
-            manifest.push({id: id, src: src});
+            var src = "img/airbreak/" + i + ".png";
+            manifest.push({ id: id, src: src });
         }
-        for(var i = 1; i <= 15; i++){
+        for (var i = 1; i <= 15; i++) {
             var id = "light2" + i;
-            var src = "img/light2/" + i  + ".png";
-            manifest.push({id: id, src: src});
+            var src = "img/light2/" + i + ".png";
+            manifest.push({ id: id, src: src });
         }
 
         var loadQueue = new createjs.LoadQueue();
@@ -269,69 +310,15 @@
         }
 
         function handleFileLoadComplete(event) {
-            if(event.item.type == createjs.Types.JAVASCRIPT){
+            if (event.item.type == createjs.Types.JAVASCRIPT) {
                 document.head.append(event.result)
             }
         }
 
-        var checkmate;
-        var attackbgm;
-        var clickbgm;
-        var fieldbgm;
-        var talkingbgm;
-        var wazabgm;
-        var wazabgm2;
-        var fourbgm;
-        var winbgm;
-
         function handleComplete() {
-            console.log("handleComplete")
-            var tap = ('ontouchstart' in window || navigator.msMaxTouchPoints) ? 'touchstart' : 'mousedown';
-
-            checkmate = createjs.Sound.createInstance('checkmate');
-            attackbgm = createjs.Sound.createInstance('attack');
-            clickbgm = createjs.Sound.createInstance('click');
-            fieldbgm = createjs.Sound.createInstance('field');
-            talkingbgm = createjs.Sound.createInstance('talking');
-            wazabgm = createjs.Sound.createInstance('wazabgm');
-            wazabgm2 = createjs.Sound.createInstance('wazabgm2');
-            fourbgm = createjs.Sound.createInstance('four');
-            winbgm = createjs.Sound.createInstance('win');
-
-            document.addEventListener(tap,bgmstart,false); 
             title();
-        }
-
-        function bgmstart(){
-            console.log("bgmstart")
-            checkmate.volume = 0.5;
-            checkmate.play();       
-            checkmate.stop();   
-            attackbgm.volume = 0.5;
-            attackbgm.play();       
-            attackbgm.stop();   
-            clickbgm.volume = 0.5;
-            clickbgm.play();       
-            clickbgm.stop();   
-            fieldbgm.volume = 0.5;
-            fieldbgm.play();       
-            fieldbgm.stop();   
-            talkingbgm.volume = 0.5;
-            talkingbgm.play();       
-            talkingbgm.stop();   
-            winbgm.volume = 0.5;
-            winbgm.play();       
-            winbgm.stop();      
-            wazabgm.volume = 0.5;
-            wazabgm.play();       
-            wazabgm.stop();   
-            wazabgm2.volume = 0.5;
-            wazabgm2.play();       
-            wazabgm2.stop();   
-            fourbgm.volume = 0.5;
-            fourbgm.play();       
-            fourbgm.stop();       
         }
     </script>
 </body>
+
 </html>
