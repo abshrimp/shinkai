@@ -305,8 +305,11 @@ function battle4(stage2, game, enemydata, next1, next2) {
 
     document.addEventListener(tap, touch2, false);
 
+    let doubleflag = false;
     function touch2(e) {
+        if (doubleflag) return;
         if (!touchOk) return;
+        doubleflag = true;
         if (tap == 'touchstart') {
             var touches = e.changedTouches[0];
         } else {
@@ -316,6 +319,7 @@ function battle4(stage2, game, enemydata, next1, next2) {
         var X = (touches.clientX - rect.left) / rect.width * canvas.width;
         var Y = (touches.clientY - rect.top) / rect.height * canvas.height;
         touch(X, Y);
+        doubleflag = false;
     }
 
     function itemwindowend() {
@@ -650,9 +654,12 @@ function battle4(stage2, game, enemydata, next1, next2) {
             var b = rect("#000", 0, 0, 320, 533);
             b.alpha = 0;
             if (orLv == newLv) {
+                document.removeEventListener(tap, touch3);
                 createjs.Tween.get(b).to({ alpha: 1 }, 400).wait(100).to({ alpha: 0 }, 400).call(ending3);
                 stage.addChild(b);
             } else {
+                document.removeEventListener(tap, touch3);
+                
                 createjs.Tween.get(b).to({ alpha: 1 }, 400);
                 stage.addChild(b);
 
