@@ -42,9 +42,9 @@ function prepare(e) {
     clickbgm.play();
     clickbgm.pause();
     fieldbgm.play();
-    fieldbgm.pause();
+    fieldbgm.pause();*/
     talkingbgm.play();
-    talkingbgm.pause();*/
+    talkingbgm.pause();
     wazabgm.play();
     wazabgm.pause();
     wazabgm2.play();
