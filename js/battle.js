@@ -319,7 +319,7 @@ function battle4(stage2, game, enemydata, next1, next2) {
         var X = (touches.clientX - rect.left) / rect.width * canvas.width;
         var Y = (touches.clientY - rect.top) / rect.height * canvas.height;
         touch(X, Y);
-        doubleflag = false;
+        setTimeout(function(){doubleflag = false;}, 100)
     }
 
     function itemwindowend() {
