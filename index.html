@@ -138,22 +138,22 @@
 
         function loadAudios() {
             promises = [
-                loadAudio('sound/checkmate.mp3', true),
+                loadAudio('sound/checkmate.mp3'),
                 loadAudio('sound/attack.mp3'),
                 loadAudio('sound/click.mp3'),
-                loadAudio('sound/field.mp3', true),
-                loadAudio('sound/talking.mp3', true),
+                loadAudio('sound/field.mp3'),
+                loadAudio('sound/talking.mp3'),
                 loadAudio('sound/waza.mp3'),
                 loadAudio('sound/waza2.mp3'),
                 loadAudio('sound/four.mp3'),
                 loadAudio('sound/win.mp3')
             ];
             Promise.all(promises).then(audioBuffers => {
-                checkmate = create_sourse(audioBuffers[0]);
+                checkmate = create_sourse(audioBuffers[0], true);
                 attackbgm = create_sourse(audioBuffers[1]);
                 clickbgm = create_sourse(audioBuffers[2]);
-                fieldbgm = create_sourse(audioBuffers[3]);
-                talkingbgm = create_sourse(audioBuffers[4]);
+                fieldbgm = create_sourse(audioBuffers[3], true);
+                talkingbgm = create_sourse(audioBuffers[4], true);
                 wazabgm = create_sourse(audioBuffers[5]);
                 wazabgm2 = create_sourse(audioBuffers[6]);
                 fourbgm = create_sourse(audioBuffers[7]);
