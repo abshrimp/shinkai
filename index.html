@@ -84,6 +84,84 @@
     <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
     <script>
 
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const audioContext = new AudioContext();
+
+        function loadAudio(url) {
+            return fetch(url)
+                .then(response => response.arrayBuffer())
+                .then(arrayBuffer => {
+                    return new Promise((resolve, reject) => {
+                        audioContext.decodeAudioData(arrayBuffer, (audioBuffer) => {
+                            resolve(audioBuffer);
+                        }, (err) => {
+                            reject(err);
+                        });
+                    });
+                });
+        }
+
+        function create_sourse(audioBuffer, loop = false) {
+            let audio = {};
+            audio.buffer = audioBuffer;
+            audio.loop = loop;
+            audio.play = function (start = 0) {
+                if (this.source) this.source.stop();
+                let source = audioContext.createBufferSource();
+                source.buffer = this.buffer;
+                source.loop = this.loop;
+                let gainNode = audioContext.createGain();
+                gainNode.gain.value = 0.5; //default
+                gainNode.connect(audioContext.destination);
+                source.connect(gainNode);
+                source.start(0, start);
+                this.source = source;
+                this.gain = gainNode;
+            }
+            audio.vol = function (vol) {
+                if (this.source) this.gain.gain.value = vol;
+            }
+            audio.pause = function () {
+                if (this.source) this.source.stop();
+            }
+            audio.fade = function () {
+                if (this.source) {
+                    setTimeout(function (aud) {
+                        aud.vol(aud.gain.gain.value - 0.01);
+                        if (aud.gain.gain.value >= 0.01) aud.fade();
+                        else this.pause;
+                    }, 10, this);
+                }
+            }
+            return audio;
+        }
+
+        function loadAudios() {
+            promises = [
+                loadAudio('sound/checkmate.mp3', true),
+                loadAudio('sound/attack.mp3'),
+                loadAudio('sound/click.mp3'),
+                loadAudio('sound/field.mp3', true),
+                loadAudio('sound/talking.mp3', true),
+                loadAudio('sound/waza.mp3'),
+                loadAudio('sound/waza2.mp3'),
+                loadAudio('sound/four.mp3'),
+                loadAudio('sound/win.mp3')
+            ];
+            Promise.all(promises).then(audioBuffers => {
+                checkmate = create_sourse(audioBuffers[0]);
+                attackbgm = create_sourse(audioBuffers[1]);
+                clickbgm = create_sourse(audioBuffers[2]);
+                fieldbgm = create_sourse(audioBuffers[3]);
+                talkingbgm = create_sourse(audioBuffers[4]);
+                wazabgm = create_sourse(audioBuffers[5]);
+                wazabgm2 = create_sourse(audioBuffers[6]);
+                fourbgm = create_sourse(audioBuffers[7]);
+                winbgm = create_sourse(audioBuffers[8]);
+                handleComplete();
+            });
+        }
+
         var checkmate;
         var attackbgm;
         var clickbgm;
@@ -93,37 +171,7 @@
         var wazabgm2;
         var fourbgm;
         var winbgm;
-
-        checkmate = new Audio('sound/checkmate.mp3');
-        checkmate.load();
-        checkmate.loop = true;
-        checkmate.volume = 0;
-        attackbgm = new Audio('sound/attack.mp3');
-        attackbgm.load();
-        attackbgm.volume = 0;
-        clickbgm = new Audio('sound/click.mp3');
-        clickbgm.load();
-        clickbgm.volume = 0;
-        fieldbgm = new Audio('sound/field.mp3');
-        fieldbgm.load();
-        fieldbgm.loop = true;
-        fieldbgm.volume = 0;
-        talkingbgm = new Audio('sound/talking.mp3');
-        talkingbgm.load();
-        talkingbgm.loop = true;
-        talkingbgm.volume = 0;
-        wazabgm = new Audio('sound/waza.mp3');
-        wazabgm.load();
-        wazabgm.volume = 0;
-        wazabgm2 = new Audio('sound/waza2.mp3');
-        wazabgm2.load();
-        wazabgm2.volume = 0;
-        fourbgm = new Audio('sound/four.mp3');
-        fourbgm.load();
-        fourbgm.volume = 0;
-        winbgm = new Audio('sound/win.mp3');
-        winbgm.load();
-        winbgm.volume = 0;
+        loadAudios();
 
         window.addEventListener('load', function () {
             if ('serviceWorker' in navigator) {
@@ -324,8 +372,10 @@
             }
         }
 
+        let complete = 0;
         function handleComplete() {
-            title();
+            complete++;
+            if (complete == 2) title();
         }
     </script>
 </body>
