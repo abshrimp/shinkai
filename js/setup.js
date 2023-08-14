@@ -25,74 +25,20 @@ function title() {
         var tap = ('ontouchstart' in window || navigator.msMaxTouchPoints) ? 'touchstart' : 'mousedown';
         document.addEventListener(tap, prepare, false);
     }, 1000);
-    wazabgm.muted = true;
-    wazabgm2.muted = true;
-    fourbgm.muted = true;
-    winbgm.muted = true;
 }
 
 function prepare(e) {
+    audioContext.resume();
     var tap = ('ontouchstart' in window || navigator.msMaxTouchPoints) ? 'touchstart' : 'mousedown';
     document.removeEventListener(tap, prepare);
-    
-    checkmate.play();
-    checkmate.pause();
-    /*attackbgm.play();
-    attackbgm.pause();
-    clickbgm.play();
-    clickbgm.pause();
-    fieldbgm.play();
-    fieldbgm.pause();*/
-    talkingbgm.play();
-    talkingbgm.pause();
-    wazabgm.play();
-    wazabgm.pause();
-    wazabgm2.play();
-    wazabgm2.pause();
-    fourbgm.play();
-    fourbgm.pause();
-    winbgm.play();
-    winbgm.pause();
-
     var ctx = document.getElementById('canvas2').getContext('2d');
     ctx.fillStyle = "Black";
     ctx.fillRect(0, 0, 320, 533);
     window.setTimeout(function() {
-        checkmate.volume = 0.5;
-        attackbgm.volume = 0.5;
-        clickbgm.volume = 0.5;
-        fieldbgm.volume = 0.5;
-        talkingbgm.volume = 0.5;
-        wazabgm.volume = 0.5;
-        wazabgm2.volume = 0.5;
-        fourbgm.volume = 0.5;
-        winbgm.volume = 0.5;
-        wazabgm.muted = false;
-        wazabgm2.muted = false;
-        fourbgm.muted = false;
-        winbgm.muted = false;
         title3();
     }, 1000);
     GLstage = new createjs.StageGL("canvas");
     GLstage.setClearColor('#000');
-}
-
-function fade(music) {
-    var vol = 0.5;
-
-    function fade2() {
-        vol = vol - 0.05;
-        music.volume = vol;
-        if (vol <= 0.05) {
-            music.pause();
-            music.volume = 0.5;
-            return;
-        }
-        window.setTimeout(function() {
-            fade2();
-        }, 50);
-    }
-    fade2();
 }
 
 function title3() {
@@ -104,8 +50,7 @@ function title3() {
 
 
 function title2(stage2) {
-    checkmate.currentTime = 22;
-    checkmate.play();
+    checkmate.play(22);
 
     var stage = stage2;
 
@@ -162,40 +107,32 @@ function title2(stage2) {
         if (x > 80 && x < 240) {
             if (y > 202 && y < 256) {
                 document.removeEventListener(tap, can2touch, false);
-                clickbgm.pause();
-                clickbgm.currentTime = 0;
                 clickbgm.play();
                 for (var i = 1; i < stage.children.length; i++) {
                     createjs.Tween.get(stage.children[i]).to({ alpha: 0 }, 300);
                 }
                 createjs.Tween.get(stage.children[0]).to({ alpha: 0 }, 300).call(textbox);
-                fade(checkmate);
+                checkmate.fade();
 
             } else if (y > 277 && y < 330) {
                 document.removeEventListener(tap, can2touch, false);
-                clickbgm.pause();
-                clickbgm.currentTime = 0;
                 clickbgm.play();
                 for (var i = 1; i < stage.children.length; i++) {
                     createjs.Tween.get(stage.children[i]).to({ alpha: 0 }, 300);
                 }
                 createjs.Tween.get(stage.children[0]).to({ alpha: 0 }, 300).call(textbox2);
-                fade(checkmate);
+                checkmate.fade();
 
             } else if (y > 352 && y < 405) {
                 document.removeEventListener(tap, can2touch, false);
-                clickbgm.pause();
-                clickbgm.currentTime = 0;
                 clickbgm.play();
                 for (var i = 1; i < stage.children.length; i++) {
                     createjs.Tween.get(stage.children[i]).to({ alpha: 0 }, 300);
                 }
                 createjs.Tween.get(stage.children[0]).to({ alpha: 0 }, 300).call(ranking);
-                fade(checkmate);
+                checkmate.fade();
 
             } else if (y > 427 && y < 480) {
-                clickbgm.pause();
-                clickbgm.currentTime = 0;
                 clickbgm.play();
                 location.href = './explanation.html';
             }
@@ -250,8 +187,6 @@ function title2(stage2) {
 
             if (x > 32 && x < 139 && y > 448 && y < 501) {
                 document.removeEventListener(tap, cantouch, false);
-                clickbgm.pause();
-                clickbgm.currentTime = 0;
                 clickbgm.play();
                 for (var i = 0; i < stage.children.length - 1; i++) {
                     createjs.Tween.get(stage.children[i]).to({ alpha: 0 }, 200);
@@ -261,8 +196,6 @@ function title2(stage2) {
                 div2.parentNode.removeChild(div2);
 
             } else if (x > 181 && x < 288 && y > 448 && y < 501) {
-                clickbgm.pause();
-                clickbgm.currentTime = 0;
                 clickbgm.play();
                 stage.addChild(cover);
                 var newname = document.getElementById("name").value;
@@ -429,8 +362,6 @@ function title2(stage2) {
 
             if (x > 32 && x < 139 && y > 448 && y < 501) {
                 document.removeEventListener(tap, cantouch, false);
-                clickbgm.pause();
-                clickbgm.currentTime = 0;
                 clickbgm.play();
                 for (var i = 0; i < stage.children.length - 1; i++) {
                     createjs.Tween.get(stage.children[i]).to({ alpha: 0 }, 200);
@@ -440,8 +371,6 @@ function title2(stage2) {
                 div2.parentNode.removeChild(div2);
 
             } else if (x > 181 && x < 288 && y > 448 && y < 501) {
-                clickbgm.pause();
-                clickbgm.currentTime = 0;
                 clickbgm.play();
                 stage.addChild(cover);
                 var newname = document.getElementById("name").value;
@@ -605,8 +534,6 @@ function title2(stage2) {
 
             if (x > 120 && x < 200 && y > 490 && y < 520) {
                 document.removeEventListener(tap, cantouch, false);
-                clickbgm.pause();
-                clickbgm.currentTime = 0;
                 clickbgm.play();
                 for (var i = 0; i < stage.children.length - 1; i++) {
                     createjs.Tween.get(stage.children[i]).to({ alpha: 0 }, 200);
@@ -773,12 +700,11 @@ function opening(stage) {
     }
 
     function next301() {
-        checkmate.currentTime = 74.8;
-        checkmate.play();
+        checkmate.play(74.8);
     }
 
     function next302() {
-        fade(checkmate);
+        checkmate.fade();
     }
     var opbg1 = bmp("opimg1", -100, 80, 500);
     var opbg2 = bmp("opimg2", -100, 80, 500);

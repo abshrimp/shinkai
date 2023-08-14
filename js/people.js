@@ -337,7 +337,6 @@ var peopleList = [{
                 createjs.Ticker.removeEventListener("tick", stage);
                 stage.clear();
                 game.stopOn = false;
-                fieldbgm.currentTime = 0;
                 fieldbgm.play();
             }
         }
@@ -390,7 +389,7 @@ var peopleList = [{
             function next14() { talk("真改", "はいっ、是非聞かせてください", 2, stage, next15); }
 
             function next15() {
-                fade(fieldbgm);
+                fieldbgm.fade();
                 talk("女神族の生き残り", "何年前だったかなぁ……黶子＜ほくろ＞族と女神族は本当に仲が良かった", 2, stage, next16);
             }
 
@@ -778,7 +777,6 @@ var peopleList = [{
                     createjs.Ticker.removeEventListener("tick", stage);
                     stage.clear();
                     game.stopOn = false;
-                    fieldbgm.currentTime = 0;
                     fieldbgm.play();
                 }
             }
@@ -928,7 +926,6 @@ var peopleList = [{
                     createjs.Ticker.removeEventListener("tick", stage);
                     stage.clear();
                     game.stopOn = false;
-                    fieldbgm.currentTime = 0;
                     fieldbgm.play();
                 }
             } else {
@@ -988,7 +985,6 @@ var peopleList = [{
                     createjs.Ticker.removeEventListener("tick", stage);
                     stage.clear();
                     game.stopOn = false;
-                    fieldbgm.currentTime = 0;
                     fieldbgm.play();
                 }
             } else {
@@ -1048,7 +1044,6 @@ var peopleList = [{
                     createjs.Ticker.removeEventListener("tick", stage);
                     stage.clear();
                     game.stopOn = false;
-                    fieldbgm.currentTime = 0;
                     fieldbgm.play();
                 }
             } else {
@@ -1108,7 +1103,6 @@ var peopleList = [{
                     createjs.Ticker.removeEventListener("tick", stage);
                     stage.clear();
                     game.stopOn = false;
-                    fieldbgm.currentTime = 0;
                     fieldbgm.play();
                 }
             } else {
@@ -1168,7 +1162,6 @@ var peopleList = [{
                     createjs.Ticker.removeEventListener("tick", stage);
                     stage.clear();
                     game.stopOn = false;
-                    fieldbgm.currentTime = 0;
                     fieldbgm.play();
                 }
             } else {
@@ -1228,7 +1221,6 @@ var peopleList = [{
                     createjs.Ticker.removeEventListener("tick", stage);
                     stage.clear();
                     game.stopOn = false;
-                    fieldbgm.currentTime = 0;
                     fieldbgm.play();
                 }
             } else {
@@ -1288,7 +1280,6 @@ var peopleList = [{
                     createjs.Ticker.removeEventListener("tick", stage);
                     stage.clear();
                     game.stopOn = false;
-                    fieldbgm.currentTime = 0;
                     fieldbgm.play();
                 }
             } else {

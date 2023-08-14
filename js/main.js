@@ -137,7 +137,6 @@ function fieldstart(fieldmap, posArr, ouryu) {
         stage.removeAllChildren();
         createjs.Tween.removeAllTweens();
         stage.clear();
-        fieldbgm.currentTime = 0;
         fieldbgm.play();
         questmsg();
     }
@@ -234,7 +233,6 @@ function talk(name, msg, type, stage2, next, next2, select1, select2) {
 
         var msgcou = 0;
 
-        talkingbgm.pause();
         talkingbgm.play();
         hyouji2();
 
@@ -305,8 +303,6 @@ function talk(name, msg, type, stage2, next, next2, select1, select2) {
 
         if (x > 53 && x < 267 && y > 65 && y < 120) {
             document.removeEventListener(tap, can2touch);
-            clickbgm.pause();
-            clickbgm.currentTime = 0;
             clickbgm.play();
             stage.removeChild(texts);
             stage.removeChild(box1);
@@ -317,8 +313,6 @@ function talk(name, msg, type, stage2, next, next2, select1, select2) {
 
         } else if (x > 53 && x < 267 && y > 143 && y < 196) {
             document.removeEventListener(tap, can2touch);
-            clickbgm.pause();
-            clickbgm.currentTime = 0;
             clickbgm.play();
             stage.removeChild(texts);
             stage.removeChild(box1);
@@ -357,8 +351,6 @@ function talk(name, msg, type, stage2, next, next2, select1, select2) {
 
 
 function itemGet(game) {
-    clickbgm.pause();
-    clickbgm.currentTime = 0;
     clickbgm.play();
     //武器かアイテムか
     if (Math.random() > 0.2) {
@@ -461,8 +453,6 @@ function itemGet(game) {
         }
 
         if (x > 80 && x < 240 && y > 427 && y < 480) {
-            clickbgm.pause();
-            clickbgm.currentTime = 0;
             clickbgm.play();
             var checklen = (isItem) ? item.length : wea.length;
             if (checklen >= 10) {
@@ -545,8 +535,6 @@ function itemGet(game) {
     function selectitem(x, y) {
         if (x > 53 && x < 267 && y > 245 && y < 300) {
             document.removeEventListener(tap, can2touch);
-            clickbgm.pause();
-            clickbgm.currentTime = 0;
             clickbgm.play();
             for (var i = 0; i < stage2.children.length - 1; i++) {
                 createjs.Tween.get(stage2.children[i]).to({ alpha: 0 }, 400);
@@ -555,8 +543,6 @@ function itemGet(game) {
 
         } else if (x > 53 && x < 267 && y > 363 && y < 416) {
             document.removeEventListener(tap, can2touch);
-            clickbgm.pause();
-            clickbgm.currentTime = 0;
             clickbgm.play();
             if (isItem) {
                 for (var i = 1; i < stage2.children.length - 1; i++) {
@@ -656,8 +642,6 @@ function pauseScene(game, hero) {
         if (x > 80 && x < 240) {
             if (y > 107 && y < 160) {
                 document.removeEventListener(tap, can2touch, false);
-                clickbgm.pause();
-                clickbgm.currentTime = 0;
                 clickbgm.play();
                 for (var i = 1; i < stage.children.length - 1; i++) {
                     createjs.Tween.get(stage.children[i]).to({ alpha: 0 }, 100);
@@ -666,8 +650,6 @@ function pauseScene(game, hero) {
 
             } else if (y > 181 && y < 235) {
                 document.removeEventListener(tap, can2touch, false);
-                clickbgm.pause();
-                clickbgm.currentTime = 0;
                 clickbgm.play();
                 for (var i = 1; i < stage.children.length - 1; i++) {
                     createjs.Tween.get(stage.children[i]).to({ alpha: 0 }, 100);
@@ -676,8 +658,6 @@ function pauseScene(game, hero) {
 
             } else if (y > 256 && y < 309) {
                 document.removeEventListener(tap, can2touch, false);
-                clickbgm.pause();
-                clickbgm.currentTime = 0;
                 clickbgm.play();
                 for (var i = 1; i < stage.children.length - 1; i++) {
                     createjs.Tween.get(stage.children[i]).to({ alpha: 0 }, 100);
@@ -686,8 +666,6 @@ function pauseScene(game, hero) {
 
             } else if (y > 331 && y < 384) {
                 document.removeEventListener(tap, can2touch, false);
-                clickbgm.pause();
-                clickbgm.currentTime = 0;
                 clickbgm.play();
                 for (var i = 1; i < stage.children.length - 1; i++) {
                     createjs.Tween.get(stage.children[i]).to({ alpha: 0 }, 100);
@@ -696,8 +674,6 @@ function pauseScene(game, hero) {
 
             } else if (y > 405 && y < 459) {
                 document.removeEventListener(tap, can2touch, false);
-                clickbgm.pause();
-                clickbgm.currentTime = 0;
                 clickbgm.play();
                 for (var i = 0; i < stage.children.length - 1; i++) {
                     createjs.Tween.get(stage.children[i]).to({ alpha: 0 }, 100);
@@ -888,21 +864,15 @@ function itemwindow(pattern, game, stage2, itemindex) {
         if (y > 427 && y < 480) {
             if (pattern == 2) {
                 if (x > 80 && x < 240) {
-                    clickbgm.pause();
-                    clickbgm.currentTime = 0;
                     clickbgm.play();
                     enditemwindow();
                     return;
                 }
             } else if (x > 13 && x < 157) {
-                clickbgm.pause();
-                clickbgm.currentTime = 0;
                 clickbgm.play();
                 enditemwindow();
                 return;
             } else if (x > 162 && x < 306) {
-                clickbgm.pause();
-                clickbgm.currentTime = 0;
                 clickbgm.play();
                 if (targetItemnum < 10) {
                     if (pattern == 1) {
@@ -955,8 +925,6 @@ function itemwindow(pattern, game, stage2, itemindex) {
                 stage.children[i + 1].graphics._fill.style = "#000";
             }
             if (x > 16 + (i % 5) * 60 && x < 64 + (i % 5) * 60 && y > 70 + Math.floor(i / 5) * 64 && y < 118 + Math.floor(i / 5) * 64) {
-                clickbgm.pause();
-                clickbgm.currentTime = 0;
                 clickbgm.play();
                 targetItemnum = i;
                 if (pattern == 1) {
@@ -1177,8 +1145,6 @@ function statuswindow(game, stage2) {
 
         if (x > 120 && x < 200 && y > 490 && y < 520) {
             document.removeEventListener(tap, cantouch, false);
-            clickbgm.pause();
-            clickbgm.currentTime = 0;
             clickbgm.play();
             for (var i = 0; i < stage.children.length - 1; i++) {
                 createjs.Tween.get(stage.children[i]).to({ alpha: 0 }, 200);
@@ -1337,8 +1303,6 @@ function datasave(game, hero, stage2) {
 
         if (x > 32 && x < 139 && y > 358 && y < 412) {
             document.removeEventListener(tap, can2touch, false);
-            clickbgm.pause();
-            clickbgm.currentTime = 0;
             clickbgm.play();
             for (var i = 0; i < stage.children.length - 1; i++) {
                 createjs.Tween.get(stage.children[i]).to({ alpha: 0 }, 100);
@@ -1346,10 +1310,8 @@ function datasave(game, hero, stage2) {
             createjs.Tween.get(stage.children[i]).to({ alpha: 0 }, 100).call(endsave);
 
         } else if (x > 181 && x < 288 && y > 358 && y < 412) {
-            clickbgm.pause();
-            clickbgm.currentTime = 0;
             clickbgm.play();
-            fade(fieldbgm);
+            fieldbgm.fade();
             GLstage.removeAllChildren();
             GLstage.update();
             var b = rect("#000", 0, 0, 320, 533);

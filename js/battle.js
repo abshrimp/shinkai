@@ -305,11 +305,8 @@ function battle4(stage2, game, enemydata, next1, next2) {
 
     document.addEventListener(tap, touch2, false);
 
-    let doubleflag = false;
     function touch2(e) {
-        if (doubleflag) return;
         if (!touchOk) return;
-        doubleflag = true;
         if (tap == 'touchstart') {
             var touches = e.changedTouches[0];
         } else {
@@ -319,7 +316,6 @@ function battle4(stage2, game, enemydata, next1, next2) {
         var X = (touches.clientX - rect.left) / rect.width * canvas.width;
         var Y = (touches.clientY - rect.top) / rect.height * canvas.height;
         touch(X, Y);
-        setTimeout(function(){doubleflag = false;}, 100)
     }
 
     function itemwindowend() {
@@ -348,8 +344,6 @@ function battle4(stage2, game, enemydata, next1, next2) {
 
         } else if (x > 16 && x < 80 && y > 379 && y < 437) {
             touchOk = false;
-            clickbgm.pause();
-            clickbgm.currentTime = 0;
             clickbgm.play();
             itemwindow(5, itemwindowend, stage);
 
@@ -434,8 +428,6 @@ function battle4(stage2, game, enemydata, next1, next2) {
         var rx = Math.random() * i - 11;
         var ry = Math.random() * i - 11;
         createjs.Tween.get(bmp2).to({ x: bmpx + rx, y: bmpy + ry }, 100).call(move);
-        attackbgm.pause();
-        attackbgm.currentTime = 0;
         attackbgm.play();
 
         var cou = 6;
@@ -499,7 +491,7 @@ function battle4(stage2, game, enemydata, next1, next2) {
 
     function ending() {
         document.removeEventListener(tap, touch2, false);
-        fade(checkmate);
+        checkmate.fade();
         var b = rect("#000", 0, 0, 320, 533);
         b.alpha = 0;
         b.visible = true;
@@ -549,7 +541,6 @@ function battle4(stage2, game, enemydata, next1, next2) {
         createjs.Ticker.removeEventListener("tick", handleTick3);
         stage.clear();
         if (next1 === void 0) {
-            fieldbgm.currentTime = 0;
             fieldbgm.play();
             game.stopOn = false;
         } else {
@@ -635,8 +626,6 @@ function battle4(stage2, game, enemydata, next1, next2) {
         var x = (touches.clientX - rect2.left) / rect2.width * canvas.width;
         var y = (touches.clientY - rect2.top) / rect2.height * canvas.height;
         if (x > 100 && x < 200 && y > 400 && y < 455) {
-            clickbgm.pause();
-            clickbgm.currentTime = 0;
             clickbgm.play();
             if (lvupt) {
                 for (var i = 0; i < stage.children.length; i++) {
@@ -654,12 +643,9 @@ function battle4(stage2, game, enemydata, next1, next2) {
             var b = rect("#000", 0, 0, 320, 533);
             b.alpha = 0;
             if (orLv == newLv) {
-                document.removeEventListener(tap, touch3);
                 createjs.Tween.get(b).to({ alpha: 1 }, 400).wait(100).to({ alpha: 0 }, 400).call(ending3);
                 stage.addChild(b);
             } else {
-                document.removeEventListener(tap, touch3);
-                
                 createjs.Tween.get(b).to({ alpha: 1 }, 400);
                 stage.addChild(b);
 
@@ -1107,7 +1093,7 @@ function battle4(stage2, game, enemydata, next1, next2) {
     var t3;
 
     function battlestart(name1, name2) {
-        fade(fieldbgm);
+        fieldbgm.fade();
         if (wea[nowwea] == 25) {
             player = 1;
             var name = name1;
@@ -1139,15 +1125,12 @@ function battle4(stage2, game, enemydata, next1, next2) {
 
     function touchstart1() {
         touchOk = true;
-        checkmate.currentTime = 22;
-        checkmate.play();
+        checkmate.play(22);
     }
 
     function touchstart(x, y) {
         if (x > 107 && x < 213 && y > 320 && y < 373) {
             touchOk = false;
-            clickbgm.pause();
-            clickbgm.currentTime = 0;
             clickbgm.play();
 
             bg2.alpha = 0.7;
@@ -1200,8 +1183,6 @@ function battle4(stage2, game, enemydata, next1, next2) {
 
 
 function battle(game) {
-    clickbgm.pause();
-    clickbgm.currentTime = 0;
     clickbgm.play();
 
     var enemydata = enemyList[Math.floor(Math.random() * 25)];
@@ -1289,16 +1270,10 @@ function battle(game) {
         var y = (touches.clientY - rect.top) / rect.height * canvas.height;
 
         if (x > 32 && x < 139 && y > 427 && y < 480) {
-            document.removeEventListener(tap, can2touch);
-            clickbgm.pause();
-            clickbgm.currentTime = 0;
             clickbgm.play();
             createjs.Tween.get(b).to({ alpha: 1 }, 200).call(escape);
             stage2.addChild(b);
         } else if (x > 181 && x < 288 && y > 427 && y < 480) {
-            document.removeEventListener(tap, can2touch);
-            clickbgm.pause();
-            clickbgm.currentTime = 0;
             clickbgm.play();
             createjs.Tween.get(b).to({ alpha: 1 }, 200).call(bs);
             stage2.addChild(b);
@@ -1338,6 +1313,7 @@ function battle(game) {
     }
 
     function fieldon() {
+        document.removeEventListener(tap, can2touch);
         stage2.removeAllChildren();
         createjs.Ticker.removeEventListener("tick", handleTick);
         createjs.Tween.removeAllTweens();
