@@ -1289,12 +1289,14 @@ function battle(game) {
         var y = (touches.clientY - rect.top) / rect.height * canvas.height;
 
         if (x > 32 && x < 139 && y > 427 && y < 480) {
+            document.removeEventListener(tap, can2touch);
             clickbgm.pause();
             clickbgm.currentTime = 0;
             clickbgm.play();
             createjs.Tween.get(b).to({ alpha: 1 }, 200).call(escape);
             stage2.addChild(b);
         } else if (x > 181 && x < 288 && y > 427 && y < 480) {
+            document.removeEventListener(tap, can2touch);
             clickbgm.pause();
             clickbgm.currentTime = 0;
             clickbgm.play();
@@ -1336,7 +1338,6 @@ function battle(game) {
     }
 
     function fieldon() {
-        document.removeEventListener(tap, can2touch);
         stage2.removeAllChildren();
         createjs.Ticker.removeEventListener("tick", handleTick);
         createjs.Tween.removeAllTweens();
