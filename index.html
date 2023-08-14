@@ -111,7 +111,7 @@
                 source.buffer = this.buffer;
                 source.loop = this.loop;
                 let gainNode = audioContext.createGain();
-                gainNode.gain.value = 0.5; //default
+                gainNode.gain.value = 0.3; //default
                 gainNode.connect(audioContext.destination);
                 source.connect(gainNode);
                 source.start(0, start);
