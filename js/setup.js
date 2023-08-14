@@ -32,6 +32,9 @@ function title() {
 }
 
 function prepare(e) {
+    var tap = ('ontouchstart' in window || navigator.msMaxTouchPoints) ? 'touchstart' : 'mousedown';
+    document.removeEventListener(tap, prepare);
+    
     checkmate.play();
     checkmate.pause();
     /*attackbgm.play();
@@ -51,8 +54,6 @@ function prepare(e) {
     winbgm.play();
     winbgm.pause();
 
-    var tap = ('ontouchstart' in window || navigator.msMaxTouchPoints) ? 'touchstart' : 'mousedown';
-    document.removeEventListener(tap, prepare);
     var ctx = document.getElementById('canvas2').getContext('2d');
     ctx.fillStyle = "Black";
     ctx.fillRect(0, 0, 320, 533);
