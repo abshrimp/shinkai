@@ -228,7 +228,7 @@ function title2(stage2) {
                 var data = { name: newname, word: password };
 
                 var request = new XMLHttpRequest();
-                request.open("POST", "https://ikegamishinkai.shop/new.php", true);
+                request.open("POST", "https://ss1.xrea.com/ikegamishinkai.s242.xrea.com/new.php", true);
                 request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                 request.send(EncodeHTMLForm(data));
                 request.onreadystatechange = function() {
@@ -408,7 +408,7 @@ function title2(stage2) {
                 }
 
                 var request = new XMLHttpRequest();
-                request.open("POST", "https://ikegamishinkai.shop/get.php", true);
+                request.open("POST", "https://ss1.xrea.com/ikegamishinkai.s242.xrea.com/get.php", true);
                 request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                 request.send(EncodeHTMLForm(data));
                 request.onreadystatechange = function() {
@@ -552,7 +552,7 @@ function title2(stage2) {
         }
 
         var request = new XMLHttpRequest();
-        request.open("GET", "https://ikegamishinkai.shop/rank.php", true);
+        request.open("GET", "https://ss1.xrea.com/ikegamishinkai.s242.xrea.com/rank.php", true);
         request.send();
         request.onload = function() {
             if (request.status == 200) {
