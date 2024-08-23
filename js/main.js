@@ -1225,7 +1225,7 @@ function datasave(game, hero, stage2) {
 
     function savedatasend() {
         var request = new XMLHttpRequest();
-        request.open("POST", "https://ikegamishinkai.shop/save.php", true);
+        request.open("POST", "https://ss1.xrea.com/ikegamishinkai.s242.xrea.com/save.php", true);
         request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         request.send(EncodeHTMLForm(data));
         request.onreadystatechange = function() {
