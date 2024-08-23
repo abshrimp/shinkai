@@ -836,7 +836,7 @@ function battle4(stage2, game, enemydata, next1, next2) {
     }
 
     function playsend() {
-        var url = "https://ikegamishinkai.shop/c4solver.cgi?" + balls;
+        var url = "https://ss1.xrea.com/ikegamishinkai.s242.xrea.com/c4solver.cgi?" + balls;
         var xhr = new XMLHttpRequest();
         xhr.open('GET', url);
         xhr.onload = () => {
